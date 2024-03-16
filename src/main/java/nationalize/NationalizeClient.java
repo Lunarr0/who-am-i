@@ -7,11 +7,25 @@ import feign.Param;
 import feign.RequestLine;
 import feign.gson.GsonDecoder;
 
+/**
+ * Client interface to query the possible countries of origin for a last name.
+ * The {@link #newInstance()} method is provided to obtain a
+ * {@code NationalizeClient} object.
+ */
 public interface NationalizeClient {
 
+    /**
+     * {@return the possible countries of origin for the last name specified}
+     *
+     * @param name a last name
+     * @throws feign.FeignException if any error occurs
+     */
     @RequestLine("GET /?name={name}")
     Nationality getNationality(@Param("name") String name);
 
+    /**
+     * {@return an object implementing the {@code NationalizeClient} interface}
+     */
     static NationalizeClient newInstance() {
         return Feign.builder()
                 .decoder(new GsonDecoder(new GsonBuilder()

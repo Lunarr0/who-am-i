@@ -1,5 +1,8 @@
 package nationalize;
 
+/**
+ * CLI for the {@code nationalize} package.
+ */
 public class Main {
 
     public static void main(String[] args) {
