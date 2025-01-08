@@ -1,1 +1,22 @@
-<
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nationality Results</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Results for <span th:text="${name}"></span></h1>
+        <div th:each="country : ${nationality.countries}" class="country-result">
+            <p>
+                Country: <span th:text="${country.countryId}"></span>
+                <br>
+                Probability: <span th:text="${#numbers.formatPercent(country.probability, 1, 2)}"></span>
+            </p>
+        </div>
+        <a href="/" class="button">Try Another Name</a>
+    </div>
+</body>
+</html>
